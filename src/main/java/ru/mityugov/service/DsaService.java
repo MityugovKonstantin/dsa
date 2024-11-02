@@ -25,13 +25,13 @@ public class DsaService {
     public void analyseSequences() throws Exception {
         log.info("Start analysing sequences.");
         for (String tableName : tableNames) {
-            log.info("Start analysing table '{}'.", tableName);
+            log.debug("Start analysing table '{}'.", tableName);
             long maxId = findTableMaxId(tableName);
-            log.info("Max id for table '{}' is {}.", tableName, maxId);
+            log.debug("Max id for table '{}' is {}.", tableName, maxId);
             String tableIdSequenceName = findTableIdSequenceName(tableName);
-            log.info("Sequence name for '{}' table id is {}.", tableName, tableIdSequenceName);
+            log.debug("Sequence name for '{}' table id is {}.", tableName, tableIdSequenceName);
             long sequenceLastValue = findSequenceLastValue(tableIdSequenceName);
-            log.info("Last value of '{}' sequence is {}.", tableIdSequenceName, sequenceLastValue);
+            log.debug("Last value of '{}' sequence is {}.", tableIdSequenceName, sequenceLastValue);
             sequenceInfoHelper.addSequenceInfo(tableName, maxId, tableIdSequenceName, sequenceLastValue);
         }
         sequenceInfoHelper.printFullSequenceInfo();
